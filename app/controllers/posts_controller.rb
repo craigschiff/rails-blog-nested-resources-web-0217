@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
   end
 
   def new
@@ -42,6 +43,9 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    binding.pry
+    #was very confused
+    @post.comments.destroy_all
     @post.destroy
     respond_to do |format|
       format.html { redirect_to posts_url }
